@@ -28,8 +28,8 @@ Throughout the development process, I encountered various challenges and learned
 ## Usage
 
 1. Clone the repository: `git clone https://github.com/AbdulBasitKhatri/BEEvaluator.git`
-2. Compile the code: `g++ -o BoolExprEvaluator main.cpp`
-3. Run the program with a boolean expression as an argument: `./BoolExprEvaluator`
+2. Compile the code: `cd BEEvaluator && g++ -o BEEvaluator main.cpp` (The provided binary is compiled with `g++ (Debian 13.2.0-13) 13.2.0`)
+3. Run the program with a boolean expression as an argument: `./BEEvaluator`
 4. It will ask for expression, enter any boolean algebraic expression.
 5. Truth table will be generated.
 6. To quit program just write `quit` or `exit` .
