@@ -6,7 +6,7 @@
 
 using namespace std;
 
-bool isChar(char &c)
+bool isChar(const char &c)
 {
   return (c >= 97 && c <= 122) || (c >= 65 && c <= 90);
 }
@@ -39,6 +39,10 @@ vector<Token> lex(const string &input)
     c = input[ind];
     if(c == '(')
     {
+      if(ind - 1 >= 0 && ind - 1 < input.length() && isChar(input[ind - 1]))
+      {
+        tokens.push_back(Token{c, ind - 1, AND});
+      }
       tokens.push_back(Token{c, ind, LP});
     }
     else if(c == ')')
@@ -63,6 +67,10 @@ vector<Token> lex(const string &input)
     }
     else if(isChar(c))
     {
+      if(ind - 1 >= 0 && ind - 1 < input.length() && (input[ind - 1] == ')' || isChar(input[ind - 1])))
+      {
+        tokens.push_back(Token{c, ind - 1, AND});
+      }
       tokens.push_back(Token{c, ind, VAR});
     }
     else
@@ -177,6 +185,7 @@ Node* parseFactor(vector<Token> tokens, int &index)
     {
       cerr << "\n\nParsing Error: Expected `)` at line(1," << token.ind + 1 << ")." << endl;
       delete expression;
+      exit(1);
       return nullptr;
     }
     while(index < tokens.size() && tokens.at(index).type == NOT)
@@ -192,6 +201,7 @@ Node* parseFactor(vector<Token> tokens, int &index)
     if(index < tokens.size())
     {
       cerr << "\n\nParsing Error: Invalid Character `" << tokens.at(index).repr << "` at line(1," << tokens.at(index).ind + 1 << ")." << endl;
+      exit(1);
     }
     return nullptr;
   }
@@ -331,6 +341,7 @@ int evaluate(vector<Node*> nodes, unordered_map<char, int> &values)
     else
     {
       cerr << "\n\nError: Invalid Expression Given!";
+      exit(1);
     }
   }
   return r;
@@ -338,6 +349,10 @@ int evaluate(vector<Node*> nodes, unordered_map<char, int> &values)
 
 int main()
 {
+  cout << "\n|~| BEEvaluator\n";
+  cout << "|~| [Tool for generating truth tables by evaluating boolean expressions]\n";
+  cout << "|~| Official github repo: (https://github.com/AbdulBasitKhatri/BEEvaluator)\n";
+
   string input = "";
   while(1)
   {
@@ -346,6 +361,10 @@ int main()
     if(input == "exit" || input == "quit")
     {
       break;
+    }
+    else if(input == "")
+    {
+      continue;
     }
     vector<char> varNames;
     int nVars;
@@ -361,6 +380,7 @@ int main()
         }
       }
     }
+    sort(varNames.begin(),varNames.end());
     nVars = varNames.size();
     vector<unordered_map<char, int>> truthTable = generateTruthTable(nVars, varNames);
     vector<Node*> nodes = parse(tokens);
