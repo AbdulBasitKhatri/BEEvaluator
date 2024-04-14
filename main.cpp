@@ -39,7 +39,7 @@ vector<Token> lex(const string &input)
     c = input[ind];
     if(c == '(')
     {
-      if(ind - 1 >= 0 && ind - 1 < input.length() && isChar(input[ind - 1]))
+      if(ind - 1 >= 0 && ind - 1 < input.length() && (isChar(input[ind - 1]) || input[ind - 1] == '\''))
       {
         tokens.push_back(Token{c, ind - 1, AND});
       }
@@ -67,7 +67,7 @@ vector<Token> lex(const string &input)
     }
     else if(isChar(c))
     {
-      if(ind - 1 >= 0 && ind - 1 < input.length() && (input[ind - 1] == ')' || isChar(input[ind - 1])))
+      if(ind - 1 >= 0 && ind - 1 < input.length() && (input[ind - 1] == ')' || isChar(input[ind - 1]) || input[ind - 1] == '\''))
       {
         tokens.push_back(Token{c, ind - 1, AND});
       }
