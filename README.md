@@ -32,7 +32,7 @@ Throughout the development process, I encountered various challenges and learned
 3. Run the program with a boolean expression as an argument: `./BEEvaluator`
 4. It will ask for an expression; enter any boolean algebraic expression.
 5. A truth table will be generated.
-6. To quit the program, just write `quit` or `exit`.
+6. For displaying help, type `help`; to quit the program, just write `quit` or `exit`.
 
 ## Example
 
