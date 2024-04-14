@@ -1,6 +1,6 @@
 # Boolean Expression Evaluator
 
-This is a boolean expression evaluator implemented in C++ that supports various boolean algebraic operations such as AND, OR, NOT, XOR, and prints the truth table.
+This is a boolean expression evaluator implemented in C++ that supports various boolean algebraic operations such as AND, OR, NOT, and XOR and prints the truth table.
 
 ## Background
 
@@ -21,22 +21,22 @@ Throughout the development process, I encountered various challenges and learned
 
 ## Features
 
-- Supports boolean operators: `AND (*, . (dot) , ^), OR (+), NOT ('), XOR (|)`
+- Supports boolean operators: `AND (*, . (dot), ^), OR (+), NOT ('), XOR (|)`
 - Parses boolean algebraic expressions
-- Generates and prints the truth table for the given expression
+- Generates and prints the truth table for the given expression.
 
 ## Usage
 
 1. Clone the repository: `git clone https://github.com/AbdulBasitKhatri/BEEvaluator.git`
 2. Compile the code: `cd BEEvaluator && g++ -o BEEvaluator main.cpp` (The provided binary is compiled with `g++ (Debian 13.2.0-13) 13.2.0`)
 3. Run the program with a boolean expression as an argument: `./BEEvaluator`
-4. It will ask for expression, enter any boolean algebraic expression.
-5. Truth table will be generated.
-6. To quit program just write `quit` or `exit` .
+4. It will ask for an expression; enter any boolean algebraic expression.
+5. A truth table will be generated.
+6. To quit the program, just write `quit` or `exit`.
 
 ## Example
 
-`A AND B OR C` should be written as `a . b + c` [no/extra whitespace will also work]
+`A AND B OR C` should be written as `a * b + c` or `ab + c` will also work in the latest version(s). [No or extra whitespace will also work.]
 
 #### Result
 
