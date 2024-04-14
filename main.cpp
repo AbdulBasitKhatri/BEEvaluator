@@ -347,11 +347,33 @@ int evaluate(vector<Node*> nodes, unordered_map<char, int> &values)
   return r;
 }
 
+void printHelp()
+{
+  cout << "\n|~| HELP:\n\n";
+  cout << "|~| For AND operations:\n";
+  cout << "--- Use the *, . (dot), or ^ operators.\n";
+  cout << "--- For example: 'a * b' or 'a.b' is equivalent to 'a AND b'.\n";
+  cout << "--- Additionally, 'ab' is also equivalent to 'a * b'.\n\n";
+  cout << "|~| For OR operations:\n";
+  cout << "--- Use the + operator.\n";
+  cout << "--- For example: 'a + b' is equivalent to 'a OR b'.\n\n";
+  cout << "|~| For NOT operations:\n";
+  cout << "--- Use the ' (single quote) operator.\n";
+  cout << "--- For example: a' is equivalent to 'NOT a'.\n\n";
+  cout << "|~| For XOR operations:\n";
+  cout << "--- Use the | (pipe) operator.\n";
+  cout << "--- For example: 'a | b' is equivalent to 'a XOR b'.\n\n";
+  cout << "|~| Operator Precedence:\n";
+  cout << "--- Parenthesis > NOT > AND > OR = XOR\n\n";
+  cout << "|~| Type 'quit' or 'exit' to quit or exit.\n";
+}
+
 int main()
 {
   cout << "\n|~| BEEvaluator\n";
-  cout << "|~| [Tool for generating truth tables by evaluating boolean expressions]\n";
-  cout << "|~| Official github repo: (https://github.com/AbdulBasitKhatri/BEEvaluator)\n";
+  cout << "--- [ Tool for generating truth tables by evaluating boolean expressions ]\n";
+  cout << "--- Official github repo: (https://github.com/AbdulBasitKhatri/BEEvaluator)\n\n";
+  cout << "|~| Type 'help' to display help, or 'quit' or 'exit' to quit or exit.\n";
 
   string input = "";
   while(1)
@@ -364,6 +386,11 @@ int main()
     }
     else if(input == "")
     {
+      continue;
+    }
+    else if(input == "help")
+    {
+      printHelp();
       continue;
     }
     vector<char> varNames;
